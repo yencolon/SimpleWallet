@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, Switch, useRouteMatch, withRouter } from "react-router-dom";
 import CreatePurchase from "../components/CreatePurchase";
 import VerifyPurchase from "../components/VerifyPurchase";
 
@@ -19,4 +19,4 @@ const Purchase = () => {
   );
 };
 
-export default Purchase;
+export default withRouter(Purchase);

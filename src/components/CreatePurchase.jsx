@@ -20,11 +20,15 @@ const CreatePurchase = () => {
       },
     })
       .then((data) => {
+        console.log(JSON.stringify(data));
         return data.json();
       })
       .then((response) => {
         setMessage(response.message);
-        router.push('/verify');
+        if (response.code === 200) {
+          sessionStorage.setItem("orderId", response.data.id);
+          router.push("/purchase/verify");
+        }
       })
       .catch((err) => {
         console.log(err);
