@@ -19,6 +19,7 @@ const LoginForm = ({ onLabelClick }) => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        'Accept': 'application/json',
       },
     })
       .then((data) => {
@@ -26,7 +27,6 @@ const LoginForm = ({ onLabelClick }) => {
       })
       .then((response) => {
         setMessage(response.message)
-
         if(response.code === 200 ) {
           setAuthInfo({
             user: null, 
