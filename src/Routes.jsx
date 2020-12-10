@@ -7,8 +7,6 @@ import Wallet from "./views/Wallet";
 
 const Routes = () => {
   const auth = useAuthState();
-  console.log(auth)
-  console.log(auth.isLogged ? '/wallet' : '/auth')
   return (
     <div>
       <Switch>
@@ -33,9 +31,6 @@ export default withRouter(Routes);
 
 const PrivateRoute = ({ children, ...rest }) => {
   const auth = useAuthState();
-  console.log('alo')
-  console.log(rest.path)
-  console.log(auth)
   return (
     <Route
       {...rest}

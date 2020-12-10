@@ -13,15 +13,18 @@ const CheckCredit = () => {
     fetch(API_URL + "wallet/get", {
       method: "POST",
       body: JSON.stringify(data),
+      credentials: 'omit',
+      mode: 'cors',
       headers: {
         "Content-Type": "application/json",
+        'Accept': 'application/json',
       },
     })
       .then((data) => {
         return data.json();
       })
       .then((response) => {
-        setMessage('El saldo de su billetera es: ' + response.data);
+        setMessage('El saldo de su billetera es: ' + response.data.credit);
       })
       .catch((err) => {
         console.log(err);
