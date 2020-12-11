@@ -1,4 +1,4 @@
-# Booking
+# Simple Wallet
 Prueba técnica de React (front end);
 
 ## Para visualizar el resultado del proyecto en vivo
