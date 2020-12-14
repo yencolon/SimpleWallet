@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import { API_URL } from "../config/apiUrl";
 import { useAuthDispatch } from "../context/AuthState";
 import FormLayout from "../layout/FormLayout";
-import InputLabel from "./InputLabel";
 
 const RegisterForm = ({ onLabelClick }) => {
   const [message, setMessage] = React.useState("");
   const { register, errors, handleSubmit } = useForm();
-  const { setAuthInfo }  = useAuthDispatch();
+  const { setAuthInfo } = useAuthDispatch();
   const router = useHistory();
 
   const onSubmit = (data) => {
@@ -30,9 +29,9 @@ const RegisterForm = ({ onLabelClick }) => {
           setMessage("Registro exitoso");
           setAuthInfo({
             user: response.data,
-            isLogged: true
+            isLogged: true,
           });
-          router.push('/')
+          router.push("/");
         } else {
           setMessage(response.message);
         }
@@ -49,9 +48,8 @@ const RegisterForm = ({ onLabelClick }) => {
       snipText={message}
     >
       <>
-        <InputLabel title="Nombre" />
+        <label>Nombre</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="name"
           ref={register({
@@ -62,14 +60,10 @@ const RegisterForm = ({ onLabelClick }) => {
             },
           })}
         />
+        <span>{errors.name && errors.name.message}</span>
 
-        <div>
-          <span>{errors.name && errors.name.message}</span>
-        </div>
-
-        <InputLabel title="Apellido" />
+        <label>Apellido</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="lastname"
           ref={register({
@@ -82,9 +76,8 @@ const RegisterForm = ({ onLabelClick }) => {
         />
         <span>{errors.lastname && errors.lastname.message}</span>
 
-        <InputLabel title="Document" />
+        <label>Documento</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="document"
           ref={register({
@@ -101,9 +94,8 @@ const RegisterForm = ({ onLabelClick }) => {
         />
         <span>{errors.document && errors.document.message}</span>
 
-        <InputLabel title="Telefono" />
+        <label>Telefono</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="tel"
           name="phone"
           ref={register({
@@ -115,9 +107,8 @@ const RegisterForm = ({ onLabelClick }) => {
         />
         <span>{errors.phone && errors.phone.message}</span>
 
-        <InputLabel title="Email" />
+        <label>Email</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="email"
           ref={register({
@@ -128,9 +119,9 @@ const RegisterForm = ({ onLabelClick }) => {
             },
           })}
         />
-        <InputLabel title="Contraseña" />
+
+        <label>Contraseña</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="password"
           name="password"
           ref={register({
@@ -141,11 +132,9 @@ const RegisterForm = ({ onLabelClick }) => {
             },
           })}
         />
-        <span>{errors.email && errors.email.message}</span>
-        <Link
-          to="/auth"
-          className="text-blue-700 text-right mt-1 self-end"
-        >
+        <span>{errors.password && errors.password.message}</span>
+
+        <Link to="/auth" className="text-blue-700 text-right mt-1 self-end">
           Iniciar Sesion
         </Link>
       </>

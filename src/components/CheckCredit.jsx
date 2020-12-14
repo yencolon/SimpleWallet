@@ -2,29 +2,28 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { API_URL } from "../config/apiUrl";
 import FormLayout from "../layout/FormLayout";
-import InputLabel from "./InputLabel";
 
 const CheckCredit = () => {
-  const [message, setMessage] = React.useState('');
+  const [message, setMessage] = React.useState("");
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    setMessage('Consultando');
+    setMessage("Consultando");
     fetch(API_URL + "wallet/get", {
       method: "POST",
       body: JSON.stringify(data),
-      credentials: 'omit',
-      mode: 'cors',
+      credentials: "omit",
+      mode: "cors",
       headers: {
         "Content-Type": "application/json",
-        'Accept': 'application/json',
+        Accept: "application/json",
       },
     })
       .then((data) => {
         return data.json();
       })
       .then((response) => {
-        setMessage('El saldo de su billetera es: ' + response.data.credit);
+        setMessage("El saldo de su billetera es: " + response.data.credit);
       })
       .catch((err) => {
         console.log(err);
@@ -32,11 +31,14 @@ const CheckCredit = () => {
   };
 
   return (
-    <FormLayout onSubmit={handleSubmit(onSubmit)} title="Consultar Saldo" snipText={message}>
+    <FormLayout
+      onSubmit={handleSubmit(onSubmit)}
+      title="Consultar Saldo"
+      snipText={message}
+    >
       <>
-        <InputLabel title="Document" />
+        <label>Documento</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="document"
           ref={register({
@@ -53,9 +55,8 @@ const CheckCredit = () => {
         />
         <span>{errors.document && errors.document.message}</span>
 
-        <InputLabel title="Telefono" />
+        <label>Telefono</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="tel"
           name="phone"
           ref={register({

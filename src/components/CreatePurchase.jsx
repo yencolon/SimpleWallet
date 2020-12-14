@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { API_URL } from "../config/apiUrl";
 import FormLayout from "../layout/FormLayout";
-import InputLabel from "./InputLabel";
 
 const CreatePurchase = () => {
   const [message, setMessage] = React.useState("");
@@ -42,9 +41,8 @@ const CreatePurchase = () => {
       snipText={message}
     >
       <>
-        <InputLabel title="Documento" />
+        <label>Documento</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="document"
           ref={register({
@@ -61,9 +59,8 @@ const CreatePurchase = () => {
         />
         <span>{errors.document && errors.document.message}</span>
 
-        <InputLabel title="Monto" />
+        <label>Monto</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="amount"
           ref={register({

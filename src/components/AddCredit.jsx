@@ -1,15 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import FormLayout from "../layout/FormLayout";
-import InputLabel from "./InputLabel";
-import { API_URL } from '../config/apiUrl';
+import { API_URL } from "../config/apiUrl";
 
 const AddCredit = () => {
-  const [message, setMessage] = React.useState('');
+  const [message, setMessage] = React.useState("");
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    setMessage('Consultando');
+    setMessage("Consultando");
 
     fetch(API_URL + "wallet/add", {
       method: "POST",
@@ -30,11 +29,14 @@ const AddCredit = () => {
   };
 
   return (
-    <FormLayout onSubmit={handleSubmit(onSubmit)} title="Recargar Saldo" snipText={message}>
+    <FormLayout
+      onSubmit={handleSubmit(onSubmit)}
+      title="Recargar Saldo"
+      snipText={message}
+    >
       <>
-        <InputLabel title="Document" />
+        <label>Documento</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="document"
           ref={register({
@@ -51,9 +53,8 @@ const AddCredit = () => {
         />
         <span>{errors.document && errors.document.message}</span>
 
-        <InputLabel title="Telefono" />
+        <label>Telefono</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="tel"
           name="phone"
           ref={register({
@@ -63,20 +64,18 @@ const AddCredit = () => {
             message: "Telefono debe tener entre 8 y 11 caracteres",
           })}
         />
-
         <span>{errors.phone && errors.phone.message}</span>
 
-        <InputLabel title="Monto" />
+        <label>monto</label>
         <input
-          className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
           type="text"
           name="amount"
           ref={register({
             required: true,
             min: {
               value: 1,
-              message: 'El monto minimo de recargar es 1'
-            }
+              message: "El monto minimo de recargar es 1",
+            },
           })}
         />
         <span>{errors.amount && errors.amount.message}</span>

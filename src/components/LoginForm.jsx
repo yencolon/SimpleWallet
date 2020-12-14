@@ -4,7 +4,6 @@ import { Link, useHistory } from "react-router-dom";
 import { API_URL } from "../config/apiUrl";
 import { useAuthDispatch } from "../context/AuthState";
 import FormLayout from "../layout/FormLayout";
-import InputLabel from "./InputLabel";
 
 const LoginForm = ({ onLabelClick }) => {
   const [message, setMessage] = React.useState("");
@@ -13,31 +12,31 @@ const LoginForm = ({ onLabelClick }) => {
   const router = useHistory();
 
   const onSubmit = (data) => {
-    setMessage('Login...');
+    setMessage("Login...");
     fetch(API_URL + "auth", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        'Accept': 'application/json',
+        Accept: "application/json",
       },
     })
       .then((data) => {
         return data.json();
       })
       .then((response) => {
-        setMessage(response.message)
-        if(response.code === 200 ) {
+        setMessage(response.message);
+        if (response.code === 200) {
           setAuthInfo({
-            user: null, 
+            user: null,
             isLogged: true,
-          })
-          router.push('/wallet');
+          });
+          router.push("/wallet");
         }
       })
       .catch((err) => {
         console.log(err);
-        setMessage('Error');
+        setMessage("Error");
       });
   };
 
@@ -47,9 +46,8 @@ const LoginForm = ({ onLabelClick }) => {
       title="Acceder"
       snipText={message}
     >
-      <InputLabel title="Email" />
+      <label>Email</label>
       <input
-        className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
         type="email"
         name="email"
         ref={register({
@@ -60,13 +58,10 @@ const LoginForm = ({ onLabelClick }) => {
           },
         })}
       />
-      <div>
-        <span>{errors.email && errors.email.message}</span>
-      </div>
+      <span>{errors.email && errors.email.message}</span>
 
-      <InputLabel title="Contraseña" />
+      <label>Contraseña</label>
       <input
-        className="h-10 px-2 bg-gray-50 border-yellow-400 border-2 rounded focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none"
         type="password"
         name="password"
         ref={register({
@@ -77,9 +72,9 @@ const LoginForm = ({ onLabelClick }) => {
           },
         })}
       />
-      <div>
-        <span>{errors.password && errors.password.message}</span>
-      </div>
+
+      <span>{errors.password && errors.password.message}</span>
+
       <Link
         to="/auth/register"
         className="text-blue-700 text-right mt-1 self-end"
