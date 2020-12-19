@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import { API_URL } from "../config/apiUrl";
-import { useAuthDispatch } from "../context/AuthState";
-import FormLayout from "../layout/FormLayout";
+import { API_URL } from "../../config/apiUrl";
+import { useAuthDispatch } from "../../context/AuthState";
+import FormLayout from "../../layout/FormLayout";
 
 const RegisterForm = ({ onLabelClick }) => {
   const [message, setMessage] = React.useState("");

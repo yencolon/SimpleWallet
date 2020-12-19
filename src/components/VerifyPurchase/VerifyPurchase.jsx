@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import { API_URL } from "../config/apiUrl";
-import FormLayout from "../layout/FormLayout";
+import { API_URL } from "../../config/apiUrl";
+import FormLayout from "../../layout/FormLayout";
 
 const VerifyPurchase = () => {
   const [message, setMessage] = React.useState(

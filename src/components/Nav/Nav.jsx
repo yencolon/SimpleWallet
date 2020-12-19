@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuthDispatch, useAuthState } from "../context/AuthState";
+import { useAuthDispatch, useAuthState } from "../../context/AuthState";
 import styled from "styled-components";
 import tw from "twin.macro";
 

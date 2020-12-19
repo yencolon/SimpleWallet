@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
-import { API_URL } from "../config/apiUrl";
-import { useAuthDispatch } from "../context/AuthState";
-import FormLayout from "../layout/FormLayout";
+import { API_URL } from "../../config/apiUrl";
+import { useAuthDispatch } from "../../context/AuthState";
+import FormLayout from "../../layout/FormLayout";
 
 const LoginForm = ({ onLabelClick }) => {
   const [message, setMessage] = React.useState("");

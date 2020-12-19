@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { API_URL } from "../config/apiUrl";
-import FormLayout from "../layout/FormLayout";
+import { API_URL } from "../../config/apiUrl";
+import FormLayout from "../../layout/FormLayout";
 
 const CheckCredit = () => {
   const [message, setMessage] = React.useState("");
