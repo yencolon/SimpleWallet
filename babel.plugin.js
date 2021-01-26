@@ -3,8 +3,5 @@ module.exports = {
     plugins: ["macros"],
     config: "./src/tailwind.config.js",
     format: "auto",
-  },
-  twin: {
-    preset: 'styled-components'
   }
 };
